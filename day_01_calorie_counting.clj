@@ -20,10 +20,10 @@
 
 (defn sorted-calories [s]
   (->> s
-       (str/split-lines)
-       (map (fn [s] (case s "" 0 (Integer/parseUnsignedInt s))))
-       (partition-using (fn [c] (zero? (first c))))
-       (map (fn [v] (apply + v)))
+       str/split-lines
+       (map #(case % "" 0 (parse-long %)))
+       (partition-using (comp zero? first))
+       (map #(apply + %))
        (sort >)))
 
 ;; part 1

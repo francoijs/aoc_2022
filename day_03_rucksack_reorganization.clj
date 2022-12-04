@@ -65,6 +65,6 @@ CrZsJsPPZsGzwwsLwLmpwMDw")
 (is (= 2828 (->> (slurp "day_03_rucksack_reorganization.txt")
                  str/split-lines
                  (partition 3)
-                 (map (fn [l] (apply find-common-item l)))
+                 (map #(apply find-common-item %))
                  (map priority)
                  (apply +))))

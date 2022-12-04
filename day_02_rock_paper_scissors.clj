@@ -47,9 +47,9 @@ C Z")
   
 (is (= 12 (->> test-strategy
                str/split-lines
-               (map (fn [s] (match-score (strategy s) (first s))))
+               (map #(match-score (strategy %) (first %)))
                (apply +))))
 (is (= 13193 (->> (slurp "day_02_rock_paper_scissors.txt")
                   str/split-lines
-                  (map (fn [s] (match-score (strategy s) (first s))))
+                  (map #(match-score (strategy %) (first %)))
                   (apply +))))
